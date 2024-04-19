@@ -14,4 +14,8 @@ public class RealEstateService {
         return realEstateRepository.findAll();
     }
 
+    public void addRealEstate(RealEstate realEstate){
+        realEstateRepository.insert(realEstate);
+    }
+
 }
