@@ -1,6 +1,11 @@
 package isifoo.real_estate_management.RealEstate;
 
-public class RealEstate {
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "real_estates")
+public class RealEstateModel {
+    @Id
     private long id;
     private String name;
     private String address;
@@ -12,7 +17,7 @@ public class RealEstate {
     private ListingType listingType;
 
 
-    public RealEstate(long id, String name, String address, String description, String city, String state, int price, PropertyAvailability availability, ListingType listingType) {
+    public RealEstateModel(long id, String name, String address, String description, String city, String state, int price, PropertyAvailability availability, ListingType listingType) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -24,7 +29,7 @@ public class RealEstate {
         this.listingType = listingType;
     }
 
-    public RealEstate(String name, String address, String description, String city, String state, int price, PropertyAvailability availability, ListingType listingType) {
+    public RealEstateModel(String name, String address, String description, String city, String state, int price, PropertyAvailability availability, ListingType listingType) {
         this.name = name;
         this.address = address;
         this.description = description;
