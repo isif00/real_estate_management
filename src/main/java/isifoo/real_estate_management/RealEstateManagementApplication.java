@@ -1,5 +1,8 @@
 package isifoo.real_estate_management;
 
+import isifoo.real_estate_management.RealEstate.ListingType;
+import isifoo.real_estate_management.RealEstate.PropertyAvailability;
+import isifoo.real_estate_management.RealEstate.RealEstate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +19,18 @@ public class RealEstateManagementApplication {
 	}
 
 	@GetMapping("/")
-	public List<String> home() {
-		return List.of("Welcome", "sifo");
+	public List<RealEstate> home() {
+		return List.of(new RealEstate(
+				1,
+				"House",
+				"123 Main St",
+				"Beautiful house",
+				"Springfield",
+				"IL",
+				100000,
+				PropertyAvailability.Available,
+				ListingType.forSale
+		));
 	}
 
 }
