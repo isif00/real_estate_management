@@ -3,8 +3,8 @@ LABEL authors="isifoo"
 
 RUN apt-get update && apt-get upgrade -y
 
-WORKDIR /app
-COPY ./target/real_estate_management-0.0.1-SNAPSHOT.jar /app/real_estate_management-0.0.1-SNAPSHOT.jar
+WORKDIR .
+COPY ./target/real_estate_management-0.0.1-SNAPSHOT.jar .
 EXPOSE 8080
 
-CMD ["java", "-jar", "/app/real_estate_management-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "real_estate_management-0.0.1-SNAPSHOT.jar"]
