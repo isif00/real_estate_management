@@ -15,6 +15,12 @@ public class RealEstateController {
     public List<RealEstate> getRealEstates() {
         return realEstateService.getRealEstates();
     }
+
+    @GetMapping(value = "/get-real-estate/{id}")
+    public RealEstate getRealEstate(@PathVariable String id){
+        return realEstateService.getRealEstate(id);
+    }
+
     @PostMapping(value = "/add")
     public String addUser(@RequestBody RealEstate realEstate){
         realEstateService.addRealEstate(realEstate);

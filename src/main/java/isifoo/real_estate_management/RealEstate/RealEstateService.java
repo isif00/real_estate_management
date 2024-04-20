@@ -3,13 +3,10 @@ package isifoo.real_estate_management.RealEstate;
 import com.mongodb.MongoException;
 import isifoo.real_estate_management.utils.RegexParser;
 import lombok.AllArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @AllArgsConstructor
 @Service
@@ -52,6 +49,7 @@ public class RealEstateService {
             realEstate.setPrice(Integer.parseInt(Objects.requireNonNull(RegexParser.parse("\"price\":\\s*(\\d+)", newRealEstate))));
             realEstate.setAvailability(Objects.equals(RegexParser.parse("\"availability\":\\s*\"([^\"]+)\"", newRealEstate), "AVAILABLE") ? PropertyAvailability.AVAILABLE : PropertyAvailability.NOT_AVAILABLE);
             realEstate.setListingType(Objects.equals(RegexParser.parse("\"listingType\":\\s*\"([^\"]+)\"", newRealEstate), "RENT") ? ListingType.FOR_RENT : ListingType.FOR_SALE);
+            realEstate.setOwnerId(RegexParser.parse("\"ownerId\":\\s*\"([^\"]+)\"", newRealEstate));
 
             realEstateRepository.save(realEstate);
 
@@ -61,4 +59,11 @@ public class RealEstateService {
 
     }
 
+    public RealEstate getRealEstate(String id) {
+        try {
+            return realEstateRepository.findById(id);
+        } catch (MongoException e) {
+            throw new RuntimeException("Failed to get real estate", e);
+        }
+    }
 }
