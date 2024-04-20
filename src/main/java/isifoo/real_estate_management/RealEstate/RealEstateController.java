@@ -27,4 +27,9 @@ public class RealEstateController {
         return "User deleted successfully";
     }
 
+    @PutMapping(value = "/update/{id}")
+    public String updateUser(@PathVariable String id, @RequestBody String newRealEstate){
+        realEstateService.updateRealEstate(id, newRealEstate);
+        return "User updated successfully";
+    }
 }
