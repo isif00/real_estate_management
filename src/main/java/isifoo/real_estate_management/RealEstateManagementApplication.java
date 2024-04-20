@@ -17,13 +17,4 @@ public class RealEstateManagementApplication {
 		SpringApplication.run(RealEstateManagementApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner runner (RealEstateRepository realEstateRepository){
-		return args -> {
-			realEstateRepository.save(new RealEstate("House1", "1234 Main St", "A beautiful house", "San Francisco", "CA", 1000000, PropertyAvailability.Available, ListingType.forSale));
-			realEstateRepository.save(new RealEstate("House2", "5678 Main St", "A beautiful house", "San Francisco", "CA", 2000000, PropertyAvailability.Available, ListingType.forSale));
-			realEstateRepository.save(new RealEstate("House3", "91011 Main St", "A beautiful house", "San Francisco", "CA", 3000000, PropertyAvailability.Available, ListingType.forSale));
-		};
-	}
-
 }

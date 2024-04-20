@@ -21,5 +21,10 @@ public class RealEstateController {
         return "User created successfully";
     }
 
+    @DeleteMapping(value = "/delete/{id}")
+    public String deleteUser(@PathVariable String id){
+        realEstateService.deleteRealEstate(id);
+        return "User deleted successfully";
+    }
 
 }
