@@ -1,11 +1,10 @@
-FROM ubuntu:latest AS build
+FROM openjdk:21-jdk-slim AS base
 LABEL authors="isifoo"
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install openjdk-21-jdk -y
-WORKDIR /app
-COPY . ./app
-COPY ./target/real_estate_management-0.0.1-SNAPSHOT.jar /app
-CMD ["java", "-jar", "real_estate_management-0.0.1-SNAPSHOT.jar"]
 
-FROM openjdk:21-jdk-slim
+RUN apt-get update && apt-get upgrade -y
+
+WORKDIR /app
+COPY ./target/real_estate_management-0.0.1-SNAPSHOT.jar /app/real_estate_management-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
+
+CMD ["java", "-jar", "/app/real_estate_management-0.0.1-SNAPSHOT.jar"]

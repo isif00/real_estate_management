@@ -1,4 +1,6 @@
 package isifoo.real_estate_management.Transaction;
 
-public class TransactionRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+public interface TransactionRepository  extends MongoRepository<Transaction, Long>{
 }

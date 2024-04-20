@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication(scanBasePackages = {"isifoo.real_estate_management.Client"})
+@SpringBootApplication()
 public class RealEstateManagementApplication {
 
 	public static void main(String[] args) {
