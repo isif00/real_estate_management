@@ -1,10 +1,8 @@
-FROM openjdk:21-jdk-slim AS base
+FROM openjdk:18-jdk-slim
 LABEL authors="isifoo"
 
-RUN apt-get update && apt-get upgrade -y
-
-WORKDIR .
-COPY ./target/app.jar .
+WORKDIR /app
+COPY ./target/app.jar /app
 EXPOSE 8080
 
 CMD ["java", "-jar", "app.jar"]
