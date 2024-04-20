@@ -11,6 +11,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @Service
 public class ClientService {
+
     private final ClientRepository ClientRepository;
 
     public List<Client> getClients() {

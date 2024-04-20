@@ -17,4 +17,5 @@ public class Client {
     private String city;
     private ClientType clientType;
     private List<String> realEstateIds;
+    private List<String> transactionIds;
 }

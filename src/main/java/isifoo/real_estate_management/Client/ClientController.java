@@ -1,6 +1,5 @@
 package isifoo.real_estate_management.Client;
 
-import isifoo.real_estate_management.RealEstate.RealEstate;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
