@@ -1,0 +1,9 @@
+.sidebar-container {
+    height: 100vh;
+    display: flex;
+    position: absolute;
+}
+
+.Sidebar {
+    height: 100%;
+}
