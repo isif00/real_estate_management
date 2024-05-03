@@ -22,20 +22,20 @@ public class RealEstateController {
     }
 
     @PostMapping(value = "/add")
-    public String addUser(@RequestBody RealEstate realEstate){
+    public String addRealEstate(@RequestBody RealEstate realEstate){
         realEstateService.addRealEstate(realEstate);
-        return "User created successfully";
+        return "Real Estate created successfully";
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteUser(@PathVariable String id){
+    public String deleteRealEstate(@PathVariable String id){
         realEstateService.deleteRealEstate(id);
-        return "User deleted successfully";
+        return "Real Estate deleted successfully";
     }
 
     @PutMapping(value = "/update/{id}")
-    public String updateUser(@PathVariable String id, @RequestBody String newRealEstate){
+    public String updateRealEstate(@PathVariable String id, @RequestBody String newRealEstate){
         realEstateService.updateRealEstate(id, newRealEstate);
-        return "User updated successfully";
+        return "Real Estate updated successfully";
     }
 }

@@ -1,10 +1,12 @@
 package isifoo.real_estate_management.Transaction;
 
 import com.mongodb.MongoException;
+import isifoo.real_estate_management.utils.RegexParser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class TransactionService {
 
     public void addTransaction(Transaction transaction) {
         try {
-            TransactionRepository.save(transaction);
+            TransactionRepository.insert(transaction);
         } catch (MongoException e) {
             throw new RuntimeException("Failed to add transaction", e);
         }
@@ -42,4 +44,5 @@ public class TransactionService {
             throw new RuntimeException("Failed to get transaction", e);
         }
     }
+
 }

@@ -24,25 +24,25 @@ public class ClientController {
     @PostMapping(value = "/add")
     public String addClient(@RequestBody Client client) {
         clientService.addClient(client);
-        return "User created successfully";
+        return "Client created successfully";
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public String deleteClient(@PathVariable String id) {
         clientService.deleteClient(id);
-        return "User deleted successfully";
+        return "Client deleted successfully";
     }
 
     @PutMapping(value = "/update/{id}")
     public String updateClient(@PathVariable String id, @RequestBody String newClient) {
         clientService.updateClient(id, newClient);
-        return "User updated successfully";
+        return "Client updated successfully";
     }
 
     @PutMapping(value = "/add-real-estate/{id}")
     public String addRealEstate(@PathVariable String id, @RequestBody String realEstateId) {
         clientService.addRealEstate(id, realEstateId);
-        return "Real estate added successfully";
+        return "Client estate added successfully";
     }
 
 }
