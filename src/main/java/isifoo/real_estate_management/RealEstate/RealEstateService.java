@@ -46,7 +46,7 @@ public class RealEstateService {
             realEstate.setDescription(RegexParser.parse("\"description\":\\s*\"([^\"]+)\"", newRealEstate));
             realEstate.setCity(RegexParser.parse("\"city\":\\s*\"([^\"]+)\"", newRealEstate));
             realEstate.setState(RegexParser.parse("\"state\":\\s*\"([^\"]+)\"", newRealEstate));
-            realEstate.setPrice(Integer.parseInt(Objects.requireNonNull(RegexParser.parse("\"price\":\\s*(\\d+)", newRealEstate))));
+            realEstate.setPrice(Integer.parseInt(Objects.requireNonNull(RegexParser.parse("\"price\":\\s*\"([^\"]+)\"", newRealEstate))));
             realEstate.setAvailability(Objects.equals(RegexParser.parse("\"availability\":\\s*\"([^\"]+)\"", newRealEstate), "AVAILABLE") ? PropertyAvailability.AVAILABLE : PropertyAvailability.NOT_AVAILABLE);
             realEstate.setListingType(Objects.equals(RegexParser.parse("\"listingType\":\\s*\"([^\"]+)\"", newRealEstate), "RENT") ? ListingType.FOR_RENT : ListingType.FOR_SALE);
             realEstate.setOwnerId(RegexParser.parse("\"ownerId\":\\s*\"([^\"]+)\"", newRealEstate));
