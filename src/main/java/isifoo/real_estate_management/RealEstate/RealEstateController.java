@@ -24,7 +24,7 @@ public class RealEstateController {
     @PostMapping(value = "/add")
     public String addRealEstate(@RequestBody RealEstate realEstate){
         realEstateService.addRealEstate(realEstate);
-        return "Real Estate created successfully";
+        return realEstate.getId();
     }
 
     @DeleteMapping(value = "/delete/{id}")
