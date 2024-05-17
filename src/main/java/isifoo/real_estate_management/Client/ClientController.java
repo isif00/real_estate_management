@@ -1,5 +1,6 @@
 package isifoo.real_estate_management.Client;
 
+import isifoo.real_estate_management.utils.RealEstateIdDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,8 +41,8 @@ public class ClientController {
     }
 
     @PutMapping(value = "/add-real-estate/{id}")
-    public String addRealEstate(@PathVariable String id, @RequestBody String realEstateId) {
-        clientService.addRealEstate(id, realEstateId);
+    public String addRealEstate(@PathVariable String id, @RequestBody RealEstateIdDTO realEstateIdDTO) {
+        clientService.addRealEstate(id, realEstateIdDTO.getRealEstateId());
         return "Client estate added successfully";
     }
 

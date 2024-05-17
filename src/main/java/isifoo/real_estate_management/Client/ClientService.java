@@ -64,7 +64,7 @@ public class ClientService {
     public void addRealEstate(String id, String realEstateId) {
         try {
             Client client = ClientRepository.findById(id);
-            client.getRealEstateIds().add(RegexParser.parse("\"realEstateId\" : \"([^\\\"]+)\"\n", realEstateId));
+            client.getRealEstateIds().add(realEstateId);
             ClientRepository.save(client);
         } catch (MongoException e) {
             throw new RuntimeException("Failed to add real estate", e);
