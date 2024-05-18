@@ -20,7 +20,7 @@ public class TransactionController {
     @PostMapping(value = "/add")
     public String addTransaction(@RequestBody Transaction transaction) {
         TransactionService.addTransaction(transaction);
-        return "Transaction created successfully";
+        return transaction.getId();
     }
 
     @DeleteMapping(value = "/delete/{id}")
@@ -33,5 +33,4 @@ public class TransactionController {
     public Transaction getTransaction(@PathVariable String id) {
         return TransactionService.getTransaction(id);
     }
-
 }

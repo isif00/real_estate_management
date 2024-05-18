@@ -1,12 +1,10 @@
 package isifoo.real_estate_management.Client;
 
 import com.mongodb.MongoException;
-import isifoo.real_estate_management.utils.RegexParser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 @Service
@@ -46,14 +44,29 @@ public class ClientService {
         }
     }
 
-    public void updateClient(String id, String newClient) {
+    public void updateClient(String id, Client newClient) {
         try {
             Client client = ClientRepository.findById(id);
-            client.setName(RegexParser.parse("\"name\":\\s*\"([^\"]+)\"", newClient));
-            client.setEmail(RegexParser.parse("\"email\":\\s*\"([^\"]+)\"", newClient));
-            client.setPhone(RegexParser.parse("\"phone\":\\s*\"([^\"]+)\"", newClient));
-            client.setCity(RegexParser.parse("\"city\":\\s*\"([^\"]+)\"", newClient));
-            client.setClientType(Objects.equals(RegexParser.parse("\"clientType\":\\s*\"([^\"]+)\"", newClient), "BUYER") ? ClientType.BUYER : ClientType.SELLER);
+
+            if (client == null) {
+                throw new RuntimeException("Client not found");
+            }
+
+            if (newClient.getName() != null) {
+                client.setName(newClient.getName());
+            }
+            if (newClient.getEmail() != null) {
+                client.setEmail(newClient.getEmail());
+            }
+            if (newClient.getPhone() != null) {
+                client.setPhone(newClient.getPhone());
+            }
+            if (newClient.getCity() != null) {
+                client.setCity(newClient.getCity());
+            }
+            if (newClient.getClientType() != null) {
+                client.setClientType(newClient.getClientType());
+            }
 
             ClientRepository.save(client);
         } catch (MongoException e) {
@@ -68,6 +81,16 @@ public class ClientService {
             ClientRepository.save(client);
         } catch (MongoException e) {
             throw new RuntimeException("Failed to add real estate", e);
+        }
+    }
+
+    public void addTransaction(String id, String transactionId) {
+        try {
+            Client client = ClientRepository.findById(id);
+            client.getTransactionIds().add(transactionId);
+            ClientRepository.save(client);
+        } catch (MongoException e) {
+            throw new RuntimeException("Failed to add transaction", e);
         }
     }
 

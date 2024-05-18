@@ -1,12 +1,10 @@
 package isifoo.real_estate_management.Transaction;
 
 import com.mongodb.MongoException;
-import isifoo.real_estate_management.utils.RegexParser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @AllArgsConstructor

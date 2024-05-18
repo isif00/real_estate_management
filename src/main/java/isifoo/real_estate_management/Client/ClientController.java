@@ -1,6 +1,7 @@
 package isifoo.real_estate_management.Client;
 
 import isifoo.real_estate_management.utils.RealEstateIdDTO;
+import isifoo.real_estate_management.utils.TransactionDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,7 +36,7 @@ public class ClientController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public String updateClient(@PathVariable String id, @RequestBody String newClient) {
+    public String updateClient(@PathVariable String id, @RequestBody Client newClient) {
         clientService.updateClient(id, newClient);
         return "Client updated successfully";
     }
@@ -44,6 +45,12 @@ public class ClientController {
     public String addRealEstate(@PathVariable String id, @RequestBody RealEstateIdDTO realEstateIdDTO) {
         clientService.addRealEstate(id, realEstateIdDTO.getRealEstateId());
         return "Client estate added successfully";
+    }
+
+    @PutMapping(value = "/add-transaction/{id}")
+    public String addTransaction(@PathVariable String id, @RequestBody TransactionDTO transactionId) {
+        clientService.addTransaction(id, transactionId.getTransactionId());
+        return "Client transaction added successfully";
     }
 
 }

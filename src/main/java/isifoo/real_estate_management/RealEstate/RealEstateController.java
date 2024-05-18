@@ -34,7 +34,7 @@ public class RealEstateController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public String updateRealEstate(@PathVariable String id, @RequestBody String newRealEstate){
+    public String updateRealEstate(@PathVariable String id, @RequestBody RealEstate newRealEstate){
         realEstateService.updateRealEstate(id, newRealEstate);
         return "Real Estate updated successfully";
     }

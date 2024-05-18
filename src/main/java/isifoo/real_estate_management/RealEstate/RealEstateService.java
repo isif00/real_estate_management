@@ -1,12 +1,10 @@
 package isifoo.real_estate_management.RealEstate;
 
 import com.mongodb.MongoException;
-import isifoo.real_estate_management.utils.RegexParser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 @Service
@@ -37,26 +35,47 @@ public class RealEstateService {
         }
     }
 
-    public void updateRealEstate(String id, String newRealEstate){
+    public void updateRealEstate(String id, RealEstate newRealEstate) {
         try {
             RealEstate realEstate = realEstateRepository.findById(id);
 
-            realEstate.setName(RegexParser.parse("\"name\":\\s*\"([^\"]+)\"", newRealEstate));
-            realEstate.setAddress(RegexParser.parse("\"address\":\\s*\"([^\"]+)\"", newRealEstate));
-            realEstate.setDescription(RegexParser.parse("\"description\":\\s*\"([^\"]+)\"", newRealEstate));
-            realEstate.setCity(RegexParser.parse("\"city\":\\s*\"([^\"]+)\"", newRealEstate));
-            realEstate.setState(RegexParser.parse("\"state\":\\s*\"([^\"]+)\"", newRealEstate));
-            realEstate.setPrice(Integer.parseInt(Objects.requireNonNull(RegexParser.parse("\"price\":\\s*\"([^\"]+)\"", newRealEstate))));
-            realEstate.setAvailability(Objects.equals(RegexParser.parse("\"availability\":\\s*\"([^\"]+)\"", newRealEstate), "AVAILABLE") ? PropertyAvailability.AVAILABLE : PropertyAvailability.NOT_AVAILABLE);
-            realEstate.setListingType(Objects.equals(RegexParser.parse("\"listingType\":\\s*\"([^\"]+)\"", newRealEstate), "RENT") ? ListingType.FOR_RENT : ListingType.FOR_SALE);
-            realEstate.setOwnerId(RegexParser.parse("\"ownerId\":\\s*\"([^\"]+)\"", newRealEstate));
+            if (realEstate == null) {
+                throw new RuntimeException("Real estate not found");
+            }
+
+            if (newRealEstate.getName() != null) {
+                realEstate.setName(newRealEstate.getName());
+            }
+            if (newRealEstate.getAddress() != null) {
+                realEstate.setAddress(newRealEstate.getAddress());
+            }
+            if (newRealEstate.getDescription() != null) {
+                realEstate.setDescription(newRealEstate.getDescription());
+            }
+            if (newRealEstate.getCity() != null) {
+                realEstate.setCity(newRealEstate.getCity());
+            }
+            if (newRealEstate.getState() != null) {
+                realEstate.setState(newRealEstate.getState());
+            }
+            if (newRealEstate.getPrice() != null) {
+                realEstate.setPrice(newRealEstate.getPrice());
+            }
+            if (newRealEstate.getAvailability() != null) {
+                realEstate.setAvailability(newRealEstate.getAvailability());
+            }
+            if (newRealEstate.getListingType() != null) {
+                realEstate.setListingType(newRealEstate.getListingType());
+            }
+            if (newRealEstate.getOwnerId() != null) {
+                realEstate.setOwnerId(newRealEstate.getOwnerId());
+            }
 
             realEstateRepository.save(realEstate);
 
         } catch (MongoException e) {
             throw new RuntimeException("Failed to update real estate", e);
         }
-
     }
 
     public RealEstate getRealEstate(String id) {

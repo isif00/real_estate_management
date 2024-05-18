@@ -14,7 +14,7 @@ public class RealEstate {
     private String description;
     private String city;
     private String state;
-    private int price;
+    private Integer price;
     private PropertyAvailability availability;
     private ListingType listingType;
     private String ownerId;
