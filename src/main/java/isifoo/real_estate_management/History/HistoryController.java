@@ -1,6 +1,7 @@
 package isifoo.real_estate_management.History;
 
 
+import isifoo.real_estate_management.RealEstate.RealEstate;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,10 +24,15 @@ public class HistoryController {
         return history.toString();
     }
 
-    @PutMapping(value = "/update")
-    public String updateHistory(@RequestBody History history) {
-        historyService.updateHistory(history);
-        return history.toString();
+    @PutMapping(value = "/update/{id}")
+    public String updateClientHistory(@PathVariable String id, @RequestBody History newHistory) {
+        historyService.updateClientHistory(id, newHistory);
+        return "Client History updated successfully";
+    }
+
+    @GetMapping(value = "/get-history/{id}")
+    public History getHistory(@PathVariable String id) {
+        return historyService.getHistory(id);
     }
 
     @DeleteMapping(value = "/delete")
@@ -34,5 +40,4 @@ public class HistoryController {
         historyService.deleteHistories();
         return "Histories deleted successfully";
     }
-
 }

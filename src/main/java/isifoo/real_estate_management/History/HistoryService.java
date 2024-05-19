@@ -1,6 +1,7 @@
 package isifoo.real_estate_management.History;
 
 
+import com.mongodb.MongoException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,21 @@ public class HistoryService {
         historyRepository.deleteAll();
     }
 
-    public void updateHistory(History history) {
-        historyRepository.save(history);
+    public History getHistory(String id) {
+        return historyRepository.findById(id);
+    }
+
+    public void updateClientHistory(String id, History newHistory) {
+        try {
+            History history = historyRepository.findById(id);
+
+            if (newHistory.getNumberOfTransactionsPerMonth() != null && !newHistory.getNumberOfTransactionsPerMonth().isEmpty()) {
+                history.setNumberOfTransactionsPerMonth(newHistory.getNumberOfTransactionsPerMonth());
+            }
+            historyRepository.save(history);
+
+        } catch (MongoException e) {
+            throw new RuntimeException("Failed to update history", e);
+        }
     }
 }

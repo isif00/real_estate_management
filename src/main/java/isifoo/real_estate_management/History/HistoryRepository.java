@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HistoryRepository extends MongoRepository<History, Long> {
+    History findById(String id);
 }
