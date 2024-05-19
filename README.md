@@ -3,7 +3,7 @@
 ### Introduction :
 Le logiciel de gestion immobilière que nous avons développé en Java utilise la programmation orientée objet (POO) pour fournir une solution complète pour la gestion des clients, des biens immobiliers, des transactions et des rendez-vous. Ce rapport présente la conception et la mise en œuvre des différentes classes utilisées dans le système, ainsi que leurs attributs, opérations et les relations entre elles.
 
-La Structure Du Projet :
+### La Structure Du Projet :
 #### 1. Classe Client
 
 ###### Attributs :
