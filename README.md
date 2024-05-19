@@ -119,11 +119,9 @@ Description: Chaque transaction est associée à un seul bien immobilier. L'attr
 - Description : Un client peut avoir plusieurs rendez-vous. Cette relation est représentée par l'attribut `client` dans la classe `Appointment`, qui fait référence à un objet `Client`.
 
 #### Diagramme De Classe : 
-![image](![image](https://github.com/younesbennaceur/real-estate-frontend/assets/119757029/8e040397-caed-4a67-8346-4558a90de65d)
-) 
-
+![image](https://github.com/isif00/real_estate_management/assets/116845247/19420f0c-3ee1-423f-8ae3-dada4e6330da)
 
 
 #### Architecture D'informations : 
-![image](![image](https://github.com/younesbennaceur/real-estate-frontend/assets/119757029/cf8db05a-a241-4623-80e9-5400392dccf4)
-)
+![image](https://github.com/isif00/real_estate_management/assets/116845247/64b4290b-384b-4b0e-bcae-c6a273b25768)
+
